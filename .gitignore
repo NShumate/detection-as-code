@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+.pytest_cache/
+out/
+.env
+*.key
+*.evtx
+
+# Python
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+ENV/
+env/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Project-generated artifacts
+logs/
+*.log
+*.jsonl
+report/
+reports/
+artifacts/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Local environment
+.env.*

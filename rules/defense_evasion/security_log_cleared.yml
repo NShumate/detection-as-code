@@ -1,0 +1,18 @@
+title: Security Log Cleared
+id: 3d6a0313-5a8e-4aa1-b649-4b46bc912308
+status: experimental
+description: Detects when the Windows Security log is cleared.
+author: Nathan Shumate
+date: 2026/10/11
+tags:
+    - attack.t1070
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 1102
+    condition: selection
+falsepositives:
+    - Legitimate log retention or maintenance by administrators
+level: medium

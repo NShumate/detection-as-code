@@ -1,0 +1,4 @@
+sigma-cli
+pytest
+pyyaml
+yamllint

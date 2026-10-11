@@ -1,0 +1,19 @@
+title: New Local User Created
+id: 5c7d71a2-f7df-4d2c-9bb2-9d1f67cd5e5a
+status: experimental
+description: Detects creation of a new local user in the Windows Security log.
+author: Nathan Shumate
+date: 2026/10/11
+tags:
+    - attack.persistence
+    - attack.t1136.001
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4720
+    condition: selection
+falsepositives:
+    - Legitimate user provisioning by administrators
+level: medium
