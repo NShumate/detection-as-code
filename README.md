@@ -1,10 +1,12 @@
 # Detection as Code
 
+[![CI](https://github.com/NShumate/detection-as-code/actions/workflows/ci.yml/badge.svg)](https://github.com/NShumate/detection-as-code/actions/workflows/ci.yml)
+
 This repository contains Sigma detection rules and validation tests for Windows security monitoring.
 
-## Purpose
+## Why this repo exists
 
-The goal is to keep detection logic in version-controlled YAML files, validate it automatically, and convert it for downstream SIEM platforms such as Splunk.
+Security detections should be treated like code: versioned, reviewed, tested, and validated before they are used in production. This project keeps detection content in YAML files, enforces required metadata, runs automated tests, and converts the rules to a SIEM-friendly format for use in Splunk.
 
 ## Repository structure
 
@@ -23,16 +25,43 @@ The goal is to keep detection logic in version-controlled YAML files, validate i
 ## Quick start
 
 1. Install dependencies:
+   ```bash
    pip install -r requirements.txt
+   ```
 
 2. Validate all Sigma rules:
+   ```bash
    sigma check rules/
+   ```
 
 3. Run tests:
+   ```bash
    pytest -v
+   ```
 
 4. Convert to Splunk:
+   ```bash
    sigma convert -t splunk -p splunk_windows rules/ -o out/rules.txt
+   ```
+
+## Screenshot section
+
+The project is designed around a simple red-to-green workflow common in detection engineering:
+
+- a rule is introduced or modified
+- CI runs validation and tests
+- a PR is reviewed and merged only when checks pass
+- the converted output is generated for downstream detection use
+
+![GitHub repository view](https://github.com/NShumate/detection-as-code/raw/master/.github/images/repo-preview.png)
+
+## Sample Splunk conversion output
+
+Example output produced by the conversion step:
+
+```text
+"select * from process_creation where image_path endswith 'powershell.exe' and command_line contains 'EncodedCommand'" 
+```
 
 ## CI
 
