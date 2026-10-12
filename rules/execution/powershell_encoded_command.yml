@@ -22,4 +22,3 @@ detection:
     condition: selection_image and selection_cmdline
 falsepositives:
     - Legitimate admin tools and management agents that use encoded commands
-level: medium
